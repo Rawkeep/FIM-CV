@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIM — Professional CV Portfolio</title>
+  <meta name="description" content="Professional multilingual CV/Portfolio — ATS-optimized, trilingual (DE/EN/FR), available in LinkedIn and Executive versions.">
+  <meta name="theme-color" content="#0f172a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FIM — Professional CV Portfolio">
+  <meta property="og:description" content="Multilingual CV in LinkedIn & Executive style. Deutsch, English, Francais.">
+  <meta property="og:url" content="https://rawkeep.github.io/FIM-CV/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="FIM — Professional CV Portfolio">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 700px;
+      width: 90%;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #3b82f6;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle {
+      color: #94a3b8;
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .cards {
+      display: grid;
+      gap: 1rem;
+    }
+    .card {
+      display: block;
+      text-decoration: none;
+      color: #e2e8f0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+    .card:hover {
+      background: rgba(59,130,246,0.1);
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .card p {
+      color: #94a3b8;
+      font-size: 0.875rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+    .badge-linkedin { background: #0a66c2; color: #fff; }
+    .badge-executive { background: #d4af37; color: #1a1a2e; }
+    .badge-classic { background: #475569; color: #fff; }
+    .footer {
+      margin-top: 2.5rem;
+      color: #475569;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="cv-photo.png" alt="Profile" class="avatar">
+    <h1>Frakibou Imqhamed</h1>
+    <p class="subtitle">Export &amp; Logistics | Procurement | IT Solutions</p>
+
+    <div class="cards">
+      <a href="cv-linkedin.html" class="card">
+        <span class="badge badge-linkedin">LinkedIn Style</span>
+        <h2>Modern CV — ATS-Optimized</h2>
+        <p>Clean, responsive design optimized for recruiters and ATS systems. Trilingual (DE/EN/FR).</p>
+      </a>
+
+      <a href="cv-executive.html" class="card">
+        <span class="badge badge-executive">Executive</span>
+        <h2>Executive CV — Navy &amp; Gold</h2>
+        <p>Classic professional design for C-level applications and executive positions. Trilingual (DE/EN/FR).</p>
+      </a>
+
+      <a href="CVINDEXFIM.html" class="card">
+        <span class="badge badge-classic">Classic</span>
+        <h2>Original CV</h2>
+        <p>First version — compact overview of skills and experience.</p>
+      </a>
+    </div>
+
+    <p class="footer">&copy; 2025 FIM. All versions include interactive language switcher.</p>
+  </div>
+</body>
+</html>
