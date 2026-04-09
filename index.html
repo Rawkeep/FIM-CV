@@ -24,106 +24,258 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow-x: hidden;
     }
+
+    /* Subtle animated gradient background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(184,150,62,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(59,130,246,0.04) 0%, transparent 50%);
+      z-index: 0;
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgPulse {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
     .container {
-      max-width: 700px;
-      width: 90%;
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      width: 92%;
       text-align: center;
       padding: 3rem 1.5rem;
     }
-    .avatar {
-      width: 120px;
-      height: 120px;
+
+    /* Photo styling matching CV versions */
+    .avatar-wrap {
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      object-fit: cover;
+      overflow: hidden;
+      margin: 0 auto 1.5rem;
       border: 3px solid #3b82f6;
-      margin-bottom: 1.5rem;
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.15), 0 8px 32px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    .avatar-wrap:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.25), 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      filter: contrast(1.06) brightness(1.04);
+      transform: scale(1.2);
+    }
+
     h1 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 700;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.3px;
     }
+
     .subtitle {
       color: #94a3b8;
       font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tagline {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
       margin-bottom: 2.5rem;
     }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(59,130,246,0.12);
+      color: #93c5fd;
+      border: 1px solid rgba(59,130,246,0.2);
+      letter-spacing: 0.3px;
+    }
+
     .cards {
       display: grid;
       gap: 1rem;
     }
+
     .card {
       display: block;
       text-decoration: none;
       color: #e2e8f0;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all 0.2s;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.02));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
     .card:hover {
-      background: rgba(59,130,246,0.1);
-      border-color: #3b82f6;
-      transform: translateY(-2px);
+      background: rgba(59,130,246,0.08);
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
     }
+
+    .card:hover::before { opacity: 1; }
+
     .card h2 {
       font-size: 1.15rem;
       font-weight: 600;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
+      position: relative;
     }
+
     .card p {
       color: #94a3b8;
       font-size: 0.875rem;
+      line-height: 1.5;
+      position: relative;
     }
+
+    .card-arrow {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%) translateX(0);
+      font-size: 1.2rem;
+      color: #475569;
+      transition: all 0.3s;
+    }
+
+    .card:hover .card-arrow {
+      color: #3b82f6;
+      transform: translateY(-50%) translateX(4px);
+    }
+
     .badge {
       display: inline-block;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.2rem 0.6rem;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+      position: relative;
     }
+
     .badge-linkedin { background: #0a66c2; color: #fff; }
-    .badge-executive { background: #d4af37; color: #1a1a2e; }
-    .badge-classic { background: #475569; color: #fff; }
+    .badge-executive { background: linear-gradient(135deg, #b8963e, #d4af37); color: #1a1a2e; }
+
+    .card-features {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+      position: relative;
+    }
+
+    .card-feat {
+      font-size: 0.65rem;
+      color: #64748b;
+      background: rgba(255,255,255,0.05);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
     .footer {
       margin-top: 2.5rem;
       color: #475569;
       font-size: 0.75rem;
     }
+
+    .footer a {
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover { color: #3b82f6; }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.6rem; }
+      .container { padding: 2rem 1rem; }
+      .card { padding: 1.25rem; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="cv-photo.png" alt="Profile" class="avatar">
+    <div class="avatar-wrap">
+      <img src="cv-photo.png" alt="Frakibou Imqhamed">
+    </div>
     <h1>Frakibou Imqhamed</h1>
-    <p class="subtitle">Export &amp; Logistics | Procurement | IT Solutions</p>
+    <p class="subtitle">Supply Chain & Export | Business Informatics | Full-Stack Developer</p>
+    <div class="tagline">
+      <span class="tag">15+ Years Experience</span>
+      <span class="tag">7 Languages</span>
+      <span class="tag">DE / EN / FR</span>
+    </div>
 
     <div class="cards">
       <a href="cv-linkedin.html" class="card">
         <span class="badge badge-linkedin">LinkedIn Style</span>
         <h2>Modern CV — ATS-Optimized</h2>
-        <p>Clean, responsive design optimized for recruiters and ATS systems. Trilingual (DE/EN/FR).</p>
+        <p>Clean, responsive design optimized for recruiters and applicant tracking systems. Trilingual with interactive language switcher.</p>
+        <div class="card-features">
+          <span class="card-feat">ATS-Ready</span>
+          <span class="card-feat">Print A4</span>
+          <span class="card-feat">Responsive</span>
+          <span class="card-feat">DE/EN/FR</span>
+        </div>
+        <span class="card-arrow">&rarr;</span>
       </a>
 
       <a href="cv-executive.html" class="card">
         <span class="badge badge-executive">Executive</span>
-        <h2>Executive CV — Navy &amp; Gold</h2>
-        <p>Classic professional design for C-level applications and executive positions. Trilingual (DE/EN/FR).</p>
-      </a>
-
-      <a href="CVINDEXFIM.html" class="card">
-        <span class="badge badge-classic">Classic</span>
-        <h2>Original CV</h2>
-        <p>First version — compact overview of skills and experience.</p>
+        <h2>Executive CV — Navy & Gold</h2>
+        <p>Premium design for senior and C-level applications. Elegant typography with sidebar layout and gold accents.</p>
+        <div class="card-features">
+          <span class="card-feat">Premium Design</span>
+          <span class="card-feat">Print A4</span>
+          <span class="card-feat">Sidebar</span>
+          <span class="card-feat">DE/EN/FR</span>
+        </div>
+        <span class="card-arrow">&rarr;</span>
       </a>
     </div>
 
-    <p class="footer">&copy; 2025 FIM. All versions include interactive language switcher.</p>
+    <p class="footer">
+      &copy; 2026 Frakibou Imqhamed &middot;
+      <a href="https://github.com/Rawkeep">GitHub</a> &middot;
+      <a href="mailto:frakibou.im@gmail.com">Contact</a>
+    </p>
   </div>
 </body>
 </html>

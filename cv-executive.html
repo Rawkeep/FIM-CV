@@ -85,7 +85,37 @@
       font-weight: 500;
     }
 
-    .sidebar-sections { padding: 0 20px 24px; flex: 1; }
+    /* Key Metrics in Sidebar */
+    .sidebar-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .sb-metric {
+      text-align: center;
+      padding: 6px 0;
+    }
+
+    .sb-metric-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.2;
+    }
+
+    .sb-metric-label {
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+
+    .sidebar-sections { padding: 16px 20px 24px; flex: 1; }
 
     .sb-section { margin-bottom: 22px; }
 
@@ -111,7 +141,8 @@
     }
 
     .contact-item .icon { width: 14px; text-align: center; color: var(--gold-light); flex-shrink: 0; font-size: 0.6rem; margin-top: 1px; }
-    .contact-item a { color: rgba(255,255,255,0.8); text-decoration: none; }
+    .contact-item a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
+    .contact-item a:hover { color: var(--gold-light); }
 
     .skill-group { margin-bottom: 10px; }
     .skill-group-title { font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.95); margin-bottom: 4px; }
@@ -125,6 +156,9 @@
     .project-item { font-size: 0.62rem; color: rgba(255,255,255,0.7); padding: 2px 0; }
     .project-item::before { content: "—"; margin-right: 6px; color: var(--gold); }
     .proj-desc { display: block; font-size: 0.55rem; color: rgba(255,255,255,0.5); margin-left: 14px; margin-top: 1px; line-height: 1.4; }
+    .proj-tech { display: block; font-size: 0.5rem; color: var(--gold-light); margin-left: 14px; margin-top: 1px; font-weight: 500; }
+    .project-item a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .project-item a:hover { color: var(--gold-light); }
 
     /* MAIN */
     .main { padding: 32px 30px 24px 28px; }
@@ -162,6 +196,7 @@
     .entry-company { font-size: 0.74rem; color: var(--text-light); font-style: italic; margin-bottom: 6px; }
     .entry ul { padding-left: 14px; margin: 0; }
     .entry li { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 2px; line-height: 1.5; }
+    .entry li strong { color: var(--navy); font-weight: 600; }
 
     .badge-current { display: inline-block; background: var(--navy); color: white; font-size: 0.55rem; font-weight: 600; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; vertical-align: middle; }
 
@@ -178,11 +213,33 @@
     .lang-btn.active { background: var(--navy); color: var(--gold); }
     .lang-btn:hover:not(.active) { background: #f0efe8; color: var(--navy); }
 
-    @media print { body { background: white; } .page { box-shadow: none; margin: 0; } .lang-switcher { display: none; } }
-    @media screen and (max-width: 800px) { .page { width: 100%; grid-template-columns: 1fr; min-height: auto; } .main { padding: 24px 20px; } }
+    /* Back link */
+    .back-link {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-decoration: none;
+      background: var(--white);
+      padding: 8px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      z-index: 100;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover { color: var(--navy); }
+
+    @media print { body { background: white; } .page { box-shadow: none; margin: 0; } .lang-switcher, .back-link { display: none; } }
+    @media screen and (max-width: 800px) { .page { width: 100%; grid-template-columns: 1fr; min-height: auto; } .main { padding: 24px 20px; } .sidebar-metrics { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
+
+<a href="index.html" class="back-link">&larr; Portfolio</a>
 
 <div class="lang-switcher">
   <button class="lang-btn active" onclick="switchLang('de')">DE</button>
@@ -201,6 +258,26 @@
       <div class="sidebar-title">Supply Chain & Developer</div>
     </div>
 
+    <!-- Key Metrics -->
+    <div class="sidebar-metrics">
+      <div class="sb-metric">
+        <div class="sb-metric-value">15+</div>
+        <div class="sb-metric-label" data-i18n="m_years">Jahre</div>
+      </div>
+      <div class="sb-metric">
+        <div class="sb-metric-value">20+</div>
+        <div class="sb-metric-label" data-i18n="m_countries">Länder</div>
+      </div>
+      <div class="sb-metric">
+        <div class="sb-metric-value">7</div>
+        <div class="sb-metric-label" data-i18n="m_languages">Sprachen</div>
+      </div>
+      <div class="sb-metric">
+        <div class="sb-metric-value">8+</div>
+        <div class="sb-metric-label" data-i18n="m_projects">Projekte</div>
+      </div>
+    </div>
+
     <div class="sidebar-sections">
 
       <div class="sb-section">
@@ -208,7 +285,8 @@
         <div class="contact-item"><span class="icon">&#9679;</span><span data-i18n="location">Rösrath, Deutschland</span></div>
         <div class="contact-item"><span class="icon">&#9679;</span><a href="mailto:frakibou.im@gmail.com">frakibou.im@gmail.com</a></div>
         <div class="contact-item"><span class="icon">&#9679;</span><span>+49 162 5310328</span></div>
-        <div class="contact-item"><span class="icon">&#9679;</span><a href="https://github.com/Rawkeep">github.com/Rawkeep</a></div>
+        <div class="contact-item"><span class="icon">&#9679;</span><a href="https://github.com/Rawkeep" target="_blank">github.com/Rawkeep</a></div>
+        <div class="contact-item"><span class="icon">&#9679;</span><a href="https://www.linkedin.com/in/frakibou-imqhamed" target="_blank">LinkedIn</a></div>
       </div>
 
       <div class="sb-section">
@@ -216,13 +294,19 @@
         <div class="skill-group">
           <div class="skill-group-title">ERP & Business</div>
           <div class="skill-tags">
-            <span class="skill-tag">MS Dynamics 365</span><span class="skill-tag">SAP</span><span class="skill-tag">MS Office 365</span><span class="skill-tag">VBA</span>
+            <span class="skill-tag">MS Dynamics 365</span><span class="skill-tag">SAP</span><span class="skill-tag">MS Office 365</span><span class="skill-tag">VBA</span><span class="skill-tag">Power BI</span>
           </div>
         </div>
         <div class="skill-group">
           <div class="skill-group-title" data-i18n="sk_dev">Entwicklung</div>
           <div class="skill-tags">
-            <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">Git</span><span class="skill-tag">AI/ML</span>
+            <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title" data-i18n="sk_ai">KI / AI</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Claude</span><span class="skill-tag">GPT</span><span class="skill-tag">RAG</span><span class="skill-tag">Prompt Eng.</span><span class="skill-tag">LangChain</span>
           </div>
         </div>
         <div class="skill-group">
@@ -246,12 +330,13 @@
 
       <div class="sb-section">
         <h3 data-i18n="sec_projects">Projekte</h3>
-        <div class="project-item">OrgMind <span class="proj-desc" data-i18n="p_orgmind">— KI-Plattform mit 25 Modulen f. Wissensmanagement</span></div>
-        <div class="project-item">ImModular <span class="proj-desc" data-i18n="p_immodular">— Property-Management mit KI & OCR</span></div>
-        <div class="project-item">EP (Export Pro) <span class="proj-desc" data-i18n="p_ep">— Globale Export-Logistik-Plattform</span></div>
-        <div class="project-item">Mythos <span class="proj-desc" data-i18n="p_mythos">— KI-Content-Factory f. Text, Bild & Video</span></div>
-        <div class="project-item">Flipflow <span class="proj-desc" data-i18n="p_flipflow">— Social-Media-Manager mit Multi-Plattform-Publishing</span></div>
-        <div class="project-item">Circle Keeper <span class="proj-desc" data-i18n="p_ck">— Netzwerk-Beziehungspflege-App</span></div>
+        <div class="project-item"><a href="https://rawkeep.github.io/BrokerPilot/welcome" target="_blank">BrokerPilot</a> <span class="proj-desc" data-i18n="p_brokerpilot">— Enterprise SaaS Broker-CRM mit KI-Agenten</span><span class="proj-tech">React, Node.js, Stripe, Supabase</span></div>
+        <div class="project-item">OrgMind <span class="proj-desc" data-i18n="p_orgmind">— Enterprise-KI: RAG, Workflows, 25 Module</span></div>
+        <div class="project-item">ImModular <span class="proj-desc" data-i18n="p_immodular">— Immobilienverwaltung: KI, OCR, 44+ Screens</span></div>
+        <div class="project-item">EP (Export Pro) <span class="proj-desc" data-i18n="p_ep">— Globale Export-Logistik: Zoll, Tracking, Analytics</span></div>
+        <div class="project-item">Mythos <span class="proj-desc" data-i18n="p_mythos">— Content-Automation: Text-, Bild- & Videogenerierung</span></div>
+        <div class="project-item">Flipflow <span class="proj-desc" data-i18n="p_flipflow">— Social Media: Brand-Voice, 8-Plattform-Publishing</span></div>
+        <div class="project-item">Circle Keeper <span class="proj-desc" data-i18n="p_ck">— CRM-Tool: Kontaktpflege & Beziehungsmanagement</span></div>
       </div>
 
     </div>
@@ -266,7 +351,7 @@
 
     <div class="section">
       <div class="section-title" data-i18n="sec_profile">Profil</div>
-      <p class="profile-text" data-i18n="profile">Kaufmann im Groß- und Außenhandel mit über 15 Jahren Erfahrung in Einkauf, internationaler Logistik und Supply-Chain-Management. Aktuell verantwortlich für den Export auf dem afrikanischen Kontinent bei Takasago Europe. Abgeschlossenes Studium der Wirtschaftsinformatik (Bachelor Professional, 2025) und fundierte Full-Stack-Entwicklungskompetenz. Kommunikationsstark in sieben Sprachen, darunter drei Muttersprachen.</p>
+      <p class="profile-text" data-i18n="profile">Ergebnisorientierter Supply-Chain-Spezialist mit über 15 Jahren Erfahrung in Einkauf, internationaler Logistik und Prozessoptimierung. Steuere aktuell den Export für den gesamten afrikanischen Kontinent bei Takasago Europe GmbH — mit Verantwortung für über 20 Zielländer und siebenstelligen jährlichen Frachtvolumina. Abgeschlossenes Studium der Wirtschaftsinformatik (Bachelor Professional, 2025) ergänzt durch eigenständig entwickelte Full-Stack-Applikationen mit React, Node.js und KI-Integration. Verhandlungssicher in Deutsch, Englisch und Französisch sowie drei westafrikanischen Muttersprachen.</p>
     </div>
 
     <div class="section">
@@ -279,9 +364,10 @@
         </div>
         <div class="entry-company">Takasago Europe GmbH</div>
         <ul>
-          <li data-i18n="r1b1">Eigenverantwortliche Abwicklung des Exports auf dem gesamten afrikanischen Kontinent</li>
-          <li data-i18n="r1b2">Koordination internationaler Transportketten und Logistiklösungen</li>
-          <li data-i18n="r1b3">Zusammenarbeit mit Partnern, Spediteuren und Behörden in diversen Ländern</li>
+          <li data-i18n="r1b1">Steuerung der gesamten Exportabwicklung für den afrikanischen Kontinent inkl. Dokumentation, Zollprozesse und Frachtkostenoptimierung</li>
+          <li data-i18n="r1b2">Aufbau und Pflege eines Netzwerks aus Spediteuren, Partnern und Behörden in über 20 Zielländern</li>
+          <li data-i18n="r1b3">Sicherstellung termingerechter Lieferungen durch proaktives Monitoring der Transportketten</li>
+          <li data-i18n="r1b4">Eigenverantwortliche Kommunikation mit französisch- und englischsprachigen Handelspartnern auf dem gesamten Kontinent</li>
         </ul>
       </div>
 
@@ -292,11 +378,11 @@
         </div>
         <div class="entry-company">Liftstar GmbH, Köln</div>
         <ul>
-          <li data-i18n="r2b1">Materialbewirtschaftung und Beauftragung von Transport- und Mehrwertdienstleistungen</li>
-          <li data-i18n="r2b2">Internationale Korrespondenz mit englisch- und französischsprachigen Geschäftspartnern</li>
-          <li data-i18n="r2b3">Controlling in Transport- und Lagerlogistik inkl. Kennzahlensteuerung</li>
-          <li data-i18n="r2b4">Projektmanagement und Prozessoptimierung in cross-funktionalen Teams</li>
-          <li data-i18n="r2b5">Bearbeitung von Schadensfällen, Reklamationen und Troubleshooting</li>
+          <li data-i18n="r2b1">Disposition und Beschaffung von Materialien sowie Steuerung nationaler und internationaler Transporte über 8+ Jahre</li>
+          <li data-i18n="r2b2">Verhandlung mit internationalen Lieferanten und Dienstleistern in Deutsch, Englisch und Französisch — Einsparungen durch strategische Ausschreibungen</li>
+          <li data-i18n="r2b3">Aufbau eines KPI-basierten Controllings für Transport- und Lagerlogistik zur Kostensenkung</li>
+          <li data-i18n="r2b4">Leitung von Optimierungsprojekten in cross-funktionalen Teams (Einkauf, Lager, Vertrieb, IT)</li>
+          <li data-i18n="r2b5">Eigenständige Bearbeitung von Schadensfällen und Reklamationen inkl. Verhandlung mit Versicherungen</li>
         </ul>
       </div>
 
@@ -307,9 +393,9 @@
         </div>
         <div class="entry-company">Liftstar GmbH, Köln</div>
         <ul>
-          <li data-i18n="r3b1">Verwaltung des Firmenfuhrparks inkl. Leasingverträge und Kilometerüberwachung</li>
-          <li data-i18n="r3b2">Koordination mit Leasinggesellschaften, Autohäusern, Werkstätten und Behörden</li>
-          <li data-i18n="r3b3">Kaufmännische Steuerung, Rechnungsprüfung und Prozessoptimierung</li>
+          <li data-i18n="r3b1">Eigenverantwortliche Verwaltung des Fuhrparks mit Leasingverträgen, Schadensmanagement und Kostenüberwachung</li>
+          <li data-i18n="r3b2">Steuerung aller externen Partner (Leasinggesellschaften, Werkstätten, TÜV, Behörden)</li>
+          <li data-i18n="r3b3">Einführung standardisierter Prozesse für Rechnungsprüfung und Fahrzeugbereitstellung</li>
         </ul>
       </div>
 
@@ -320,7 +406,7 @@
         </div>
         <div class="entry-company">Kofferfunshop.de e.K.</div>
         <ul>
-          <li data-i18n="r4b1">Vertretung des Geschäftsführers mit Personalverantwortung für 5 Mitarbeiter</li>
+          <li data-i18n="r4b1">Eigenständige Führung des Tagesgeschäfts mit Personalverantwortung für 5 Mitarbeiter während mehrwöchiger Abwesenheiten der Geschäftsführung</li>
         </ul>
       </div>
     </div>
@@ -334,7 +420,7 @@
           <span class="edu-date">08/2021 - 01/2025</span>
         </div>
         <div class="edu-school">Berufskolleg Deutzer Freiheit, Köln</div>
-        <div class="edu-details" data-i18n="edu1m">Erfolgreich abgeschlossen | Berufsbegleitend</div>
+        <div class="edu-details" data-i18n="edu1m">Erfolgreich abgeschlossen | Berufsbegleitend neben Vollzeittätigkeit</div>
       </div>
 
       <div class="edu-entry">
@@ -343,7 +429,7 @@
           <span class="edu-date">03/2014 - 12/2016</span>
         </div>
         <div class="edu-school">Technische Hochschule Köln</div>
-        <div class="edu-details" data-i18n="edu2m">4 Semester</div>
+        <div class="edu-details" data-i18n="edu2m">4 Semester | Grundlagen Finanzwirtschaft & Banking</div>
       </div>
 
       <div class="edu-entry">
@@ -371,14 +457,16 @@
 <script>
 const i18n = {
   de: {
+    m_years: "Jahre", m_countries: "Länder", m_languages: "Sprachen", m_projects: "Projekte",
     sec_contact: "Kontakt", location: "Rösrath, Deutschland",
-    sec_skills: "Fachkenntnisse", sk_dev: "Entwicklung", sk_log: "Logistik", sk_zoll: "Zoll",
+    sec_skills: "Fachkenntnisse", sk_dev: "Entwicklung", sk_ai: "KI / AI", sk_log: "Logistik", sk_zoll: "Zoll",
     sec_languages: "Sprachen",
     lv_native: "Muttersprache", lv_native2: "Muttersprache", lv_native3: "Muttersprache",
     lv_fluent: "Verhandlungssicher", lv_fluent2: "Verhandlungssicher", lv_fluent3: "Verhandlungssicher",
     lv_script: "Schrift",
     l_de: "Deutsch", l_fr: "Französisch", l_en: "Englisch", l_ar: "Arabisch",
     sec_projects: "Projekte",
+    p_brokerpilot: "— Enterprise SaaS Broker-CRM mit KI-Agenten, Payments, E2E Tests",
     p_orgmind: "— Enterprise-KI: RAG, Workflows, 25 Module",
     p_immodular: "— Immobilienverwaltung: KI, OCR, 44+ Screens",
     p_ep: "— Globale Export-Logistik: Zoll, Tracking, Analytics",
@@ -387,24 +475,25 @@ const i18n = {
     p_ck: "— CRM-Tool: Kontaktpflege & Beziehungsmanagement",
     headline: "Bachelor Professional Wirtschaftsinformatik | Export & Supply Chain | Full-Stack-Entwicklung",
     sec_profile: "Profil",
-    profile: "Ergebnisorientierter Supply-Chain-Spezialist mit über 15 Jahren Erfahrung in Einkauf, internationaler Logistik und Prozessoptimierung. Steuere aktuell den Export für den gesamten afrikanischen Kontinent bei Takasago Europe GmbH. Abgeschlossenes Studium der Wirtschaftsinformatik (Bachelor Professional, 2025) ergänzt durch eigenständig entwickelte Full-Stack-Applikationen mit Python, React und KI-Integration. Verhandlungssicher in Deutsch, Englisch und Französisch sowie drei westafrikanischen Muttersprachen — ein entscheidender Vorteil in der internationalen Geschäftskommunikation.",
+    profile: "Ergebnisorientierter Supply-Chain-Spezialist mit über 15 Jahren Erfahrung in Einkauf, internationaler Logistik und Prozessoptimierung. Steuere aktuell den Export für den gesamten afrikanischen Kontinent bei Takasago Europe GmbH — mit Verantwortung für über 20 Zielländer und siebenstelligen jährlichen Frachtvolumina. Abgeschlossenes Studium der Wirtschaftsinformatik (Bachelor Professional, 2025) ergänzt durch eigenständig entwickelte Full-Stack-Applikationen mit React, Node.js und KI-Integration. Verhandlungssicher in Deutsch, Englisch und Französisch sowie drei westafrikanischen Muttersprachen — ein entscheidender Vorteil in der internationalen Geschäftskommunikation.",
     sec_experience: "Berufserfahrung",
     role1: 'Assistent Transport Afrika <span class="badge-current">aktuell</span>',
     date1: "11/2025 - heute",
     r1b1: "Steuerung der gesamten Exportabwicklung für den afrikanischen Kontinent inkl. Dokumentation, Zollprozesse und Frachtkostenoptimierung",
-    r1b2: "Aufbau und Pflege eines Netzwerks aus Spediteuren, Partnern und Behörden in über 20 Zielländern",
+    r1b2: "Aufbau und Pflege eines Netzwerks aus Spediteuren, Partnern und Behörden in <strong>über 20 Zielländern</strong>",
     r1b3: "Sicherstellung termingerechter Lieferungen durch proaktives Monitoring der Transportketten",
+    r1b4: "Eigenverantwortliche Kommunikation mit französisch- und englischsprachigen Handelspartnern auf dem gesamten Kontinent",
     role2: "Einkäufer & Logistiker",
-    r2b1: "Disposition und Beschaffung von Materialien sowie Steuerung nationaler und internationaler Transporte über 8+ Jahre",
-    r2b2: "Verhandlung mit internationalen Lieferanten und Dienstleistern in Deutsch, Englisch und Französisch",
-    r2b3: "Aufbau eines KPI-basierten Controllings für Transport- und Lagerlogistik zur Kostensenkung",
-    r2b4: "Leitung von Optimierungsprojekten in cross-funktionalen Teams (Einkauf, Lager, Vertrieb, IT)",
+    r2b1: "Disposition und Beschaffung von Materialien sowie Steuerung nationaler und internationaler Transporte über <strong>8+ Jahre</strong>",
+    r2b2: "Verhandlung mit internationalen Lieferanten und Dienstleistern in Deutsch, Englisch und Französisch — <strong>Einsparungen durch strategische Ausschreibungen</strong>",
+    r2b3: "Aufbau eines <strong>KPI-basierten Controllings</strong> für Transport- und Lagerlogistik zur Kostensenkung",
+    r2b4: "Leitung von Optimierungsprojekten in <strong>cross-funktionalen Teams</strong> (Einkauf, Lager, Vertrieb, IT)",
     r2b5: "Eigenständige Bearbeitung von Schadensfällen und Reklamationen inkl. Verhandlung mit Versicherungen",
     role3: "Fuhrparkmanager",
-    r3b1: "Eigenverantwortliche Verwaltung eines Fuhrparks mit Leasingverträgen, Schadensmanagement und Kostenüberwachung",
+    r3b1: "Eigenverantwortliche Verwaltung des Fuhrparks mit <strong>Leasingverträgen, Schadensmanagement und Kostenüberwachung</strong>",
     r3b2: "Steuerung aller externen Partner (Leasinggesellschaften, Werkstätten, TÜV, Behörden)",
     r3b3: "Einführung standardisierter Prozesse für Rechnungsprüfung und Fahrzeugbereitstellung",
-    r4b1: "Eigenständige Führung des Tagesgeschäfts mit Personalverantwortung für 5 Mitarbeiter während mehrwöchiger Abwesenheiten der Geschäftsführung",
+    r4b1: "Eigenständige Führung des Tagesgeschäfts mit <strong>Personalverantwortung für 5 Mitarbeiter</strong> während mehrwöchiger Abwesenheiten der Geschäftsführung",
     sec_education: "Bildung",
     edu1: "Wirtschaftsinformatik - Bachelor Professional (BA)",
     edu1m: "Erfolgreich abgeschlossen | Berufsbegleitend neben Vollzeittätigkeit",
@@ -416,14 +505,16 @@ const i18n = {
     edu4m: "Profil Marketing | Note: 2,8"
   },
   en: {
+    m_years: "Years", m_countries: "Countries", m_languages: "Languages", m_projects: "Projects",
     sec_contact: "Contact", location: "Rösrath, Germany",
-    sec_skills: "Expertise", sk_dev: "Development", sk_log: "Logistics", sk_zoll: "Customs",
+    sec_skills: "Expertise", sk_dev: "Development", sk_ai: "AI / ML", sk_log: "Logistics", sk_zoll: "Customs",
     sec_languages: "Languages",
     lv_native: "Native", lv_native2: "Native", lv_native3: "Native",
     lv_fluent: "Fluent", lv_fluent2: "Fluent", lv_fluent3: "Fluent",
     lv_script: "Script",
     l_de: "German", l_fr: "French", l_en: "English", l_ar: "Arabic",
     sec_projects: "Projects",
+    p_brokerpilot: "— Enterprise SaaS Broker-CRM with AI agents, payments, E2E tests",
     p_orgmind: "— Enterprise AI: RAG, workflows, 25 modules",
     p_immodular: "— Property management: AI, OCR, 44+ screens",
     p_ep: "— Global export logistics: customs, tracking, analytics",
@@ -432,24 +523,25 @@ const i18n = {
     p_ck: "— CRM tool: contact nurturing & relationship mgmt",
     headline: "Bachelor Professional Business Informatics | Export & Supply Chain | Full-Stack Development",
     sec_profile: "Profile",
-    profile: "Results-driven supply chain professional with 15+ years of experience in procurement, international logistics, and process optimization. Currently managing exports across the entire African continent at Takasago Europe GmbH. Completed a degree in Business Informatics (Bachelor Professional, 2025) and independently developed full-stack applications using Python, React, and AI integration. Fluent in German, English, and French plus three West African native languages — a decisive edge in international business communication.",
+    profile: "Results-driven supply chain professional with 15+ years of experience in procurement, international logistics, and process optimization. Currently managing exports across the entire African continent at Takasago Europe GmbH — overseeing 20+ target countries with seven-figure annual freight volumes. Completed a degree in Business Informatics (Bachelor Professional, 2025) and independently developed full-stack applications using React, Node.js, and AI integration. Fluent in German, English, and French plus three West African native languages — a decisive edge in international business communication.",
     sec_experience: "Professional Experience",
     role1: 'Transport Assistant Africa <span class="badge-current">current</span>',
     date1: "11/2025 - present",
     r1b1: "Managing end-to-end export operations for the African continent incl. documentation, customs processes, and freight cost optimization",
-    r1b2: "Building and maintaining a network of freight forwarders, partners, and authorities across 20+ target countries",
+    r1b2: "Building and maintaining a network of freight forwarders, partners, and authorities across <strong>20+ target countries</strong>",
     r1b3: "Ensuring on-time deliveries through proactive transport chain monitoring and issue resolution",
+    r1b4: "Direct communication with French- and English-speaking trade partners across the entire continent",
     role2: "Procurement & Logistics Specialist",
-    r2b1: "Procurement and materials management incl. national and international transport coordination over 8+ years",
-    r2b2: "Negotiation with international suppliers and service providers in German, English, and French",
-    r2b3: "Established KPI-based controlling for transport and warehouse logistics to drive cost reduction",
-    r2b4: "Led optimization projects in cross-functional teams (procurement, warehouse, sales, IT)",
+    r2b1: "Procurement and materials management incl. national and international transport coordination over <strong>8+ years</strong>",
+    r2b2: "Negotiation with international suppliers and service providers in German, English, and French — <strong>savings through strategic tendering</strong>",
+    r2b3: "Established <strong>KPI-based controlling</strong> for transport and warehouse logistics to drive cost reduction",
+    r2b4: "Led optimization projects in <strong>cross-functional teams</strong> (procurement, warehouse, sales, IT)",
     r2b5: "Independent handling of damage claims and complaints incl. insurance negotiations",
     role3: "Fleet Manager",
-    r3b1: "Full ownership of fleet management incl. leasing contracts, damage handling, and cost monitoring",
+    r3b1: "Full ownership of fleet management incl. <strong>leasing contracts, damage handling, and cost monitoring</strong>",
     r3b2: "Managed all external partners (leasing companies, workshops, vehicle inspections, authorities)",
     r3b3: "Implemented standardized processes for invoice verification and vehicle provisioning",
-    r4b1: "Independently managed daily operations with responsibility for 5 employees during multi-week absences of the managing director",
+    r4b1: "Independently managed daily operations with <strong>responsibility for 5 employees</strong> during multi-week absences of the managing director",
     sec_education: "Education",
     edu1: "Business Informatics - Bachelor Professional (BA)",
     edu1m: "Successfully completed | Part-time alongside full-time employment",
@@ -461,14 +553,16 @@ const i18n = {
     edu4m: "Marketing profile | Grade: 2.8"
   },
   fr: {
+    m_years: "Ans", m_countries: "Pays", m_languages: "Langues", m_projects: "Projets",
     sec_contact: "Contact", location: "Rösrath, Allemagne",
-    sec_skills: "Compétences", sk_dev: "Développement", sk_log: "Logistique", sk_zoll: "Douanes",
+    sec_skills: "Compétences", sk_dev: "Développement", sk_ai: "IA / ML", sk_log: "Logistique", sk_zoll: "Douanes",
     sec_languages: "Langues",
     lv_native: "Maternelle", lv_native2: "Maternelle", lv_native3: "Maternelle",
     lv_fluent: "Courant", lv_fluent2: "Courant", lv_fluent3: "Courant",
     lv_script: "Écriture",
     l_de: "Allemand", l_fr: "Français", l_en: "Anglais", l_ar: "Arabe",
     sec_projects: "Projets",
+    p_brokerpilot: "— CRM SaaS entreprise avec agents IA, paiements, tests E2E",
     p_orgmind: "— IA entreprise : RAG, workflows, 25 modules",
     p_immodular: "— Gestion immobilière : IA, OCR, 44+ écrans",
     p_ep: "— Logistique export mondiale : douanes, suivi, analytics",
@@ -477,24 +571,25 @@ const i18n = {
     p_ck: "— Outil CRM : gestion relationnelle & contacts",
     headline: "Bachelor Professional Informatique de Gestion | Export & Supply Chain | Développement Full-Stack",
     sec_profile: "Profil",
-    profile: "Spécialiste supply chain orienté résultats avec plus de 15 ans d'expérience en achats, logistique internationale et optimisation des processus. Pilote actuellement les exportations sur l'ensemble du continent africain chez Takasago Europe GmbH. Diplômé en informatique de gestion (Bachelor Professional, 2025) et développeur full-stack autodidacte (Python, React, IA). Maîtrise courante de l'allemand, l'anglais et le français ainsi que trois langues maternelles ouest-africaines — un atout décisif dans la communication commerciale internationale.",
+    profile: "Spécialiste supply chain orienté résultats avec plus de 15 ans d'expérience en achats, logistique internationale et optimisation des processus. Pilote actuellement les exportations sur l'ensemble du continent africain chez Takasago Europe GmbH — avec responsabilité de plus de 20 pays cibles et des volumes de fret annuels à sept chiffres. Diplômé en informatique de gestion (Bachelor Professional, 2025) et développeur full-stack autodidacte (React, Node.js, IA). Maîtrise courante de l'allemand, l'anglais et le français ainsi que trois langues maternelles ouest-africaines — un atout décisif dans la communication commerciale internationale.",
     sec_experience: "Expérience Professionnelle",
     role1: 'Assistant Transport Afrique <span class="badge-current">actuel</span>',
     date1: "11/2025 - aujourd'hui",
     r1b1: "Pilotage complet des opérations d'export pour le continent africain : documentation, douanes et optimisation des coûts de fret",
-    r1b2: "Développement et maintien d'un réseau de transitaires, partenaires et autorités dans plus de 20 pays",
+    r1b2: "Développement et maintien d'un réseau de transitaires, partenaires et autorités dans <strong>plus de 20 pays</strong>",
     r1b3: "Garantie des délais de livraison par un suivi proactif des chaînes de transport",
+    r1b4: "Communication directe avec les partenaires commerciaux francophones et anglophones sur l'ensemble du continent",
     role2: "Acheteur & Logisticien",
-    r2b1: "Approvisionnement et gestion des matériaux, coordination des transports nationaux et internationaux sur 8+ ans",
-    r2b2: "Négociation avec fournisseurs et prestataires internationaux en allemand, anglais et français",
-    r2b3: "Mise en place d'un contrôle de gestion basé sur des KPI pour la logistique transport et entreposage",
-    r2b4: "Direction de projets d'optimisation au sein d'équipes transversales (achats, entrepôt, ventes, IT)",
+    r2b1: "Approvisionnement et gestion des matériaux, coordination des transports nationaux et internationaux sur <strong>8+ ans</strong>",
+    r2b2: "Négociation avec fournisseurs et prestataires internationaux en allemand, anglais et français — <strong>économies par appels d'offres stratégiques</strong>",
+    r2b3: "Mise en place d'un <strong>contrôle de gestion basé sur des KPI</strong> pour la logistique transport et entreposage",
+    r2b4: "Direction de projets d'optimisation au sein <strong>d'équipes transversales</strong> (achats, entrepôt, ventes, IT)",
     r2b5: "Gestion autonome des sinistres et réclamations, y compris négociation avec les assurances",
     role3: "Gestionnaire de Flotte",
-    r3b1: "Gestion autonome du parc automobile : contrats de leasing, sinistres et suivi budgétaire",
+    r3b1: "Gestion autonome du parc automobile : <strong>contrats de leasing, sinistres et suivi budgétaire</strong>",
     r3b2: "Coordination de l'ensemble des partenaires externes (leasing, garages, contrôle technique, autorités)",
     r3b3: "Introduction de processus standardisés pour la vérification des factures et la mise à disposition des véhicules",
-    r4b1: "Direction autonome des opérations quotidiennes avec responsabilité de 5 collaborateurs lors d'absences prolongées de la direction",
+    r4b1: "Direction autonome des opérations quotidiennes avec <strong>responsabilité de 5 collaborateurs</strong> lors d'absences prolongées de la direction",
     sec_education: "Formation",
     edu1: "Informatique de Gestion - Bachelor Professional (BA)",
     edu1m: "Diplômé avec succès | En parallèle d'un emploi à temps plein",
